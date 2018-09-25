@@ -1,0 +1,61 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <div class="page-padding-3">
+
+    <h2>Send Verification Email</h2>
+
+    <div class="zo1-container">
+      <div class="row">
+        <div class="zo1-submit">
+
+          <mat-card>
+            <form [formGroup]="emailForm">
+
+            <span *ngIf=false>
+                  <input type="text" formControlName="email">
+            </span>
+
+              <br />
+
+              <span *ngIf="!emailVerified">
+              <button type="submit" mat-raised-button color="primary" (click)="sendVerificationEmail()" >Send Verification Email</button>
+            </span>
+              <span *ngIf="display_spinner" class="go-right">
+                <mat-spinner class="thumb-spinner"></mat-spinner>
+              </span>
+
+              <div *ngIf="error" layout="row" layout-padding layout-wrap layout-margin>
+                <p class="font-18b alert-danger">{{ error }}</p>
+              </div>
+
+              <div *ngIf="emailVerified" layout="row" layout-padding layout-wrap layout-margin>
+                <p class="font-18b"> Please check your email.  </p>
+                <p class="font-18b"> A verification email has been sent to the following email: {{email}} </p>
+              </div>
+
+              <p>
+                <a  mat-raised-button [routerLink]="['/profile']">Back</a>
+              </p>
+
+            </form>
+          </mat-card>
+
+
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+  </div>
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+

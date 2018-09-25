@@ -1,0 +1,15 @@
+
+  <div class="width-100">
+
+  Maximum quantity: <b>{{quantityVal}}</b>  <br />
+  <mat-slider
+      thumbLabel
+      tickInterval="1"
+      min="1"
+      max="{{quantityMax}}"
+      step="1"
+      value="{{quantityDefault}}"
+      (change)=quantitySlider($event)>
+  </mat-slider>
+
+</div>

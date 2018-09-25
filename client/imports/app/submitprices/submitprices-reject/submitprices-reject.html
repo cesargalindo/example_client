@@ -1,0 +1,102 @@
+<span *ngIf="!hide_spinner"> <mat-spinner></mat-spinner> </span>
+
+<mat-sidenav-container *ngIf="hide_spinner"> 
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <div class="zo1-container">
+
+    <form [formGroup]="submitPriceForm" (submit)="RejectAddNewSubmitPrice()">
+
+      <div id="topdiv">
+        <a [routerLink]="['/rqreceived']" mat-raised-button class="top-49">Cancel</a>
+        <button type="submit" mat-raised-button color="primary" class="top-49">Reject Price</button>
+      </div>
+
+      <br />
+      <br />
+
+      <div class="row">
+
+        <div class="zo1-submit">
+          <mat-card>
+            <p *ngIf="errors.error" class="alert-danger">{{errors.error}}</p>
+
+            <b>Submitted price:
+              <span *ngIf="submittedPrice == 99999.01"> {{submittedPrice | displayPriceStatus }}</span>
+              <span *ngIf="submittedPrice <= 99999"> {{submittedPrice | currency:'USD':true:'1.2-2'}} </span>
+            </b>
+
+            <br />
+            <br />
+
+            <mat-checkbox
+                formControlName="soldOut"
+                (change)="clickSoldOut()"
+                color="primary">{{labels.sold_out_8}}
+            </mat-checkbox>
+
+            <br />
+            <br />
+
+            <span *ngIf="!soldOut">
+              <mat-form-field class="input-width-90">
+                <input
+                    matInput
+                    type="tel"
+                    formControlName="price"
+                    dividerColor="primary"
+                    placeholder={{labels.price_7}}>
+              </mat-form-field>
+
+              <div *ngIf="errors.price_isNumberic" class="alert-danger">{{msgs.price_isNumberic}}</div>
+              <div *ngIf="errors.price_minMax" class="alert-danger">{{msgs.price_minMax}}</div>
+              <br />
+              <br />
+            </span>
+
+            <span class="grey">{{msgs.price_reject}}</span> <br />
+
+          </mat-card>
+        </div>
+
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="zo1-info">
+
+          <mat-card>
+            <h4> {{ list.itemTitle }} </h4>
+
+            <p *ngIf="list.itemImage">  <img class="w125" src="{{list.itemImage}}"> </p>
+            <p *ngIf="!list.itemImage"> <mat-spinner></mat-spinner> </p>
+
+            <p>Quantity: {{list.quantity}} - pid: {{list.priceId}} </p>
+
+          </mat-card>
+
+          <mat-card>
+            <p>Store: {{list.storeName}}</p>
+            <p>{{list.storeAddress}}</p>
+          </mat-card>
+
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+  <br />
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+

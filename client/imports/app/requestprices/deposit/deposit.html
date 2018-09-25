@@ -1,0 +1,175 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <div id="topdiv">
+    <mat-toolbar color="primary" class="header-toolbar">
+      <mat-icon [routerLink]="['/requests']">arrow_back</mat-icon> &nbsp; Purchase Requests
+    </mat-toolbar>
+  </div>
+
+  <br />
+
+  <span *ngIf="display_spinner">
+    <mat-spinner></mat-spinner>
+  </span>
+
+  <mat-card *ngIf="step_0">
+    <h3>Purchase x number of requests</h3>
+
+    <p *ngIf="!emailVerified" class="alert-danger">Your email has not been verified.</p>
+    <p *ngIf="!_userService.cellVerified"  class="alert-danger">Your cellphone number has not been verified.</p>
+
+    <p>Both your email and cell phone number must be verified before any funds can be deposited into your account.</p>
+
+    <p> <a (click)="goToProfile()">Click here to verify.</a>  </p>
+
+    <br />
+
+    <a [routerLink]="['/money']" mat-raised-button>Back</a>
+  </mat-card>
+
+
+  <mat-card *ngIf="step_1">
+
+    <h3>Purchase x number of requests</h3>    
+    <h4>Step 1 of 2</h4>
+
+    <form [formGroup]="paymentForm" (submit)="processStep1()">
+
+      <mat-form-field class="input-width-50">
+        <input
+            matInput
+            formControlName="firstname"
+            dividerColor="primary"
+            type="text"
+            placeholder="{{vars.labels.firstname}}">
+      </mat-form-field>
+      <div *ngIf="firstname_required" class="alert-danger">{{vars.labels.firstname}} {{vars.msgs.required}}</div>
+
+      <mat-form-field class="input-width-20">
+        <input
+            matInput
+            formControlName="minitial"
+            dividerColor="primary"
+            type="text"
+            placeholder="Middle Initial">
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field class="input-width-50">
+        <input
+            matInput
+            formControlName="lastname"
+            dividerColor="primary"
+            type="text"
+            placeholder="{{vars.labels.lastname}}">
+      </mat-form-field>
+
+      <div *ngIf="lastname_required" class="alert-danger">{{vars.labels.lastname}} {{vars.msgs.required}}</div>
+
+      <br />
+      <br />
+
+      <mat-form-field class="input-width-90">
+        <input
+            matInput
+            formControlName="amount"
+            dividerColor="primary"
+            type="number"
+            step="0.01"
+            placeholder="{{vars.labels.deposit}}">
+      </mat-form-field>
+
+      <div *ngIf="amount_required" class="alert-danger">{{vars.labels.deposit}} {{vars.msgs.required}}</div>
+      <div class="grey" *ngIf="largeAmountWarning">{{vars.msgs.deposit_large}}</div>
+
+      <br />
+      <br />
+
+      <a [routerLink]="['/requests']" mat-raised-button class="top-49">Cancel</a>
+      <button type="submit" mat-raised-button color="primary" class="top-49">Next</button>
+
+    </form>
+
+  </mat-card>
+
+
+  <mat-card *ngIf="step_2">
+
+    <h3>Purchase x number of requests</h3>    
+    <h4>Step 2 of 2</h4>
+
+
+    Tests Card Numbers Type:<br />
+    4111111111111111	Visa<br />
+    4005519200000004	Visa<br />
+    4009348888881881	Visa<br />
+    4012000033330026	Visa<br />
+
+    <hr>
+
+    <form id="checkout" method="post">
+
+      <p class="grey">Select payment options by clicking on Paypal button or entering your credit card number.</p>
+      <a href="https://www.braintreegateway.com/merchants/z6fmfhwb6xzf2y4d/verified" target="_blank">
+        <img src="https://s3.amazonaws.com/braintree-badges/braintree-badge-wide-light.png" width="280px" height ="44px" border="0"/>
+      </a>
+
+      <div id="payment-form"></div>
+
+      <br />
+
+      <a [routerLink]="['/requests']" mat-raised-button class="top-49">Cancel</a>
+      <button type="submit" mat-raised-button color="primary" (click)="submitBraintreeForm()" class="top-49">Purchase</button>
+
+    </form>
+  </mat-card>
+
+
+  <mat-card *ngIf="step3_zone">
+
+    <h3>Deposit Unsuccessful</h3>
+
+    <h4>
+      Regrettably we were unable to process your deposit request at this time. <br /> <br />
+      <span class="red"> {{transactionError}} </span>
+    </h4>
+
+    Transaction Id: {{transactionId}}<br />
+    <br />
+    <br />
+
+    <a [routerLink]="['/requests']" mat-raised-button class="top-49">Money Home</a>
+
+  </mat-card>
+
+
+  <mat-card *ngIf="step4_zone">
+
+    <h3>Deposit Complete</h3>
+
+    <h4>
+      Thanks, you have successfully deposited <span class="green">{{paymentForm.value.amount | currency:'USD':true:'1.2-2'}}</span> into your ZoJab account.
+      <br /> <br />
+      It is now ready to use!
+    </h4>
+
+    Transaction Id: {{transactionId}}<br />
+    <br />
+    <br />
+
+    <a [routerLink]="['/requests']" mat-raised-button class="top-49">Money Home</a>
+
+  </mat-card>
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+

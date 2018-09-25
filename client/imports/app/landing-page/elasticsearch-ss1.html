@@ -1,0 +1,42 @@
+<div class="flex-wrapper" >
+  <div  class="width-100" *ngIf="showSearchbar">
+    <!--// s1s - user hits enter key-->
+    <div>
+        <dialog-item-history>Loading item history dialog...</dialog-item-history>
+
+        <dialog-location>Loading location dialog...</dialog-location>
+        
+        <dialog-filter>Loading filter dialog...</dialog-filter>        
+
+        &ngsp; &nbsp;      
+
+        <mat-icon (click)="barcodeCapture()" class="md-36 md-dark padding-dialog1">camera</mat-icon>
+    </div>
+    <form class="width-100" [formGroup]="termForm" ng-sub  (submit)="pressedEnterKey($event)">
+        <input
+            id="ss1-searchInput-box"
+            formControlName="value"
+            type="text"
+            maxlength="50"
+            placeholder="{{placeholder}}"
+            [(ngModel)]=clearField
+            class="places-autocomplete-input"
+            (keyup)=pressedEnterKey($event)
+            (submit)=pressedEnterKey($event)
+            [formControl]="myControl"
+            [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option  *ngFor="let item of eitems6  | async" [value]="item.name">
+            {{item.name}}
+          </mat-option>
+        </mat-autocomplete>
+        <button type="submit" style="display:none">hidden submit</button>
+    <form>
+   
+  </div>
+
+</div>
+
+<div class="clear"></div>
+
+

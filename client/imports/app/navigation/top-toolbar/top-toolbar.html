@@ -1,0 +1,47 @@
+<mat-toolbar color="primary" class="header-toolbar"  *ngIf="showTopToolbar">
+
+  <span (click)="SIDENAV.open()">
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+  </span>
+
+
+  <span class="req-count-container" *ngIf="showSearchIcon">
+    <span [routerLink]="['/requests']" *ngIf="_userService.userRequests > 0" class="req-count blue-prim"> {{ _userService.userRequests }} </span>        
+    <span [routerLink]="['/requests']" *ngIf="_userService.userRequests < 1" class="req-count red"> {{ _userService.userRequests }} </span>            
+  </span>
+
+  <span *ngIf="!showSearchIcon"> {{reactiveTitle}} </span>
+
+  <span (click)="toggleSearchbarVisibility()" class="search-icon" *ngIf="showSearchIcon">
+    <button mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+  </span>
+
+
+  <span class="fill-remaining-space"></span>
+
+  <span class="go-right">
+
+    <div *ngIf="!isLoggedIn">
+      <a mat-button [routerLink]="['/login']" >Login</a>
+      <a mat-button [routerLink]="['/signup']">Sign up</a>
+    </div>
+
+    <span *ngIf="isLoggedIn">
+      <mat-icon [routerLink]="['/landing']" [ngStyle]="isCurrent('Home')" class="font-30">home</mat-icon>
+      &nbsp;
+
+      <mat-icon [routerLink]="['/favs']" [ngStyle]="isCurrent('Favorites')" class="font-30">favorite</mat-icon>
+      &nbsp;
+
+      <mat-icon [routerLink]="['/sp']" [ngStyle]="isCurrent('Payouts')" class="font-30">monetization_on</mat-icon>
+      &nbsp;
+    </span>
+
+  </span>
+
+
+</mat-toolbar>

@@ -1,0 +1,35 @@
+<div id="sidemenu">
+
+  <!-- menu opens when trigger button is clicked -->
+  <style>
+      #sidemenu mat-icon {color:white; vertical-align:middle}
+  </style>
+  
+    <a mat-menu-item [routerLink]="['/landing']">
+      <mat-icon>home</mat-icon> Home</a> <br />
+
+    <a mat-menu-item [routerLink]="['/mocks']"><mat-icon>build</mat-icon> MOCK UPS</a> <br />
+
+    <span [hidden]="!isLoggedIn">
+
+        <a mat-menu-item [routerLink]="['/requests']"><mat-icon>assignment</mat-icon> Requests</a> <br />
+        <a mat-menu-item [routerLink]="['/submits']"><mat-icon>rate_review</mat-icon> Submits</a> <br />
+        <a mat-menu-item [routerLink]="['/settings']"><mat-icon>settings</mat-icon> Settings</a> <br />
+
+        <a mat-menu-item [routerLink]="['/items-submitted']"><mat-icon>local_mall</mat-icon> Items</a> <br />
+
+        <a mat-menu-item  [routerLink]="['/info']"><mat-icon>help</mat-icon> Help</a> <br />
+        <a mat-menu-item (click)="logout()" ><mat-icon>power_settings_new</mat-icon> Sign Out </a> <br />
+
+    </span>
+
+    <span [hidden]="isLoggedIn">
+      <a mat-menu-item  [routerLink]="['/info']"><mat-icon>help</mat-icon> Help</a> <br />
+      <a mat-menu-item disabled><mat-icon>power_settings_new</mat-icon> Sign Out </a> <br />
+    </span>
+
+    <span [hidden]="!isAdmin">
+      <a mat-menu-item [routerLink]="['/issues']">Issues</a> <br />
+    </span>
+
+</div>

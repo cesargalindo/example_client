@@ -1,0 +1,22 @@
+
+<div class="flex-wrapper">
+
+  <div class="form-group" class="width-80">
+    <input name="searchControl"
+           placeholder={{placeholder}}
+           autocorrect="off"
+           autocapitalize="off"
+           spellcheck="off"
+           type="text"
+           onclick="javascript:this.value=''"
+           class="form-control places-autocomplete-input blue-border"
+           #search
+           [formControl]="searchControl"  >
+  </div>
+
+  <div class="width-15">
+    <dialog-loc-history>Loading search location history...</dialog-loc-history>
+  </div>
+
+
+</div>

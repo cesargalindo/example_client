@@ -1,0 +1,318 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <h3>RESERVED by Cesar G. Page W</h3>
+
+  <hr>
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+          <img style="vertical-align:middle;" aria-hidden src="{{state.flag}}" height="25" />
+          <span>{{ state.name }}</span> |
+          <small>Population: {{state.population}}</small>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  
+    <br />
+  
+    <mat-slide-toggle
+      [checked]="stateCtrl.disabled"
+      (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
+      Disable Input?
+    </mat-slide-toggle>
+  </form>
+
+  <hr>
+  
+  <mat-card class="example-card">
+
+    <mat-card-header>
+
+      <div mat-card-avatar class="example-header-image mat-card-image1"></div>
+
+      <div class="flex-wrapper">
+
+        <div class="width-85">
+          <mat-card-title>
+            Arm & Hammer Feel Sanitizing Skin Laundry Detergent HE, 64 oz
+          </mat-card-title>
+        </div>
+        <div class="width-15">
+          <mat-card-title class="card-price">
+            $33.44
+          </mat-card-title>
+        </div>
+
+
+        <div class="width-25">
+          <mat-card-subtitle>Qty: 1</mat-card-subtitle>
+        </div>
+        <div class="width-35">
+          <mat-card-subtitle>1 day ago</mat-card-subtitle>
+        </div>
+
+        <div class="width-25">
+          <mat-card-subtitle>0.84 mi</mat-card-subtitle>
+        </div>
+        <div class="width-9 top-padding-12">
+          <button mat-icon-button [matMenuTriggerFor]="menu1">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu1="matMenu">
+
+            <button mat-menu-item (click)="check123(1)">
+              <mat-icon >note_add</mat-icon>
+              <span>Request</span>
+            </button>
+
+            <button mat-menu-item disabled (click)="check123(1)">
+              <mat-icon class="green" >thumb_up</mat-icon>
+              <span>Like It</span>
+            </button>
+
+            <button mat-menu-item  (click)="check123(1)">
+              <mat-icon class="red">thumb_down</mat-icon>
+              <span>UnLike It</span>
+            </button>
+
+            <button mat-menu-item  (click)="check123(1)">
+              <mat-icon class="green">favorite_border</mat-icon>
+              <span class="green font-16">+ Favorite</span>
+            </button>
+
+            <button mat-menu-item (click)="check123(1)">
+              <mat-icon class="red">favorite</mat-icon>
+              <span class="red font-16">- Favorite</span>
+            </button>
+
+          </mat-menu>
+        </div>
+
+
+
+        <div class="width-100">
+          <mat-card-subtitle>Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>
+        </div>
+
+      </div>
+
+    </mat-card-header>
+
+  </mat-card>
+
+
+
+  <mat-card class="example-card">
+
+    <mat-card-header>
+
+      <div mat-card-avatar class="example-header-image mat-card-image1"></div>
+
+      <div class="flex-wrapper">
+
+        <div class="width-85">
+          <mat-card-title>
+            Kikkoman Gourmet Teriyaki 20 minute Marinade, 16 oz
+          </mat-card-title>
+        </div>
+        <div class="width-15">
+          <mat-card-title class="card-price">
+            $3.44
+          </mat-card-title>
+        </div>
+
+
+        <div class="width-25">
+          <mat-card-subtitle>Qty: 1</mat-card-subtitle>
+        </div>
+        <div class="width-35">
+          <mat-card-subtitle>2 days ago</mat-card-subtitle>
+        </div>
+        <div class="width-25">
+          <mat-card-subtitle>3.33 mi</mat-card-subtitle>
+        </div>
+        <div class="width-9 top-padding-12">
+          <button mat-icon-button [matMenuTriggerFor]="menu2">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu2="matMenu">
+
+            <button mat-menu-item (click)="check555(2)">
+              <mat-icon >note_add</mat-icon>
+              <span>Request</span>
+            </button>
+
+            <button mat-menu-item disabled (click)="check555(2)">
+              <mat-icon class="green">thumb_up</mat-icon>
+              <span>Like It</span>
+            </button>
+
+            <button mat-menu-item (click)="check555(2)">
+              <mat-icon class="red">thumb_down</mat-icon>
+              <span>UnLike It</span>
+            </button>
+
+            <button mat-menu-item (click)="check555(2)">
+              <mat-icon class="green">favorite_border</mat-icon>
+              <span class="green font-16">+ Favorite</span>
+            </button>
+          </mat-menu>
+        </div>
+
+        <div class="width-100">
+          <mat-card-subtitle>Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>
+        </div>
+
+      </div>
+
+    </mat-card-header>
+  </mat-card>
+
+
+  <hr>
+  <!--tt ########################################################################################-->
+
+
+  <mat-card class="example-card">
+
+    <mat-card-header>
+
+      <div mat-card-avatar class="example-header-image mat-card-image1"></div>
+
+      <div class="flex-wrapper">
+
+        <div class="width-85">
+          <mat-card-title>
+            Arm & Hammer Feel Sanitizing Skin Laundry Detergent HE, 64 oz
+          </mat-card-title>
+        </div>
+        <div class="width-15">
+          <mat-card-title class="card-price">
+            $33.44
+          </mat-card-title>
+        </div>
+
+
+        <div class="width-35">
+          <mat-card-subtitle>Qty: 1</mat-card-subtitle>
+        </div>
+        <div class="width-35">
+          <mat-card-subtitle>1 day ago</mat-card-subtitle>
+        </div>
+
+        <div class="width-3">
+         &nbsp;
+        </div>
+
+        <div class="width-25 layout-last-right">
+          <mat-card-subtitle>0.84 mi</mat-card-subtitle>
+        </div>
+
+
+        <div class="width-100">
+          <!--<mat-card-subtitle class="text-store-overflow">Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>-->
+          <mat-card-subtitle>Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>
+        </div>
+
+     </div>
+
+    </mat-card-header>
+
+    <!--Ghiradeli Chocolate 60% bittersweet chocolate, 15 oz-->
+    <!--Kikkoman Gourmet Teriyaki 20 minute Marinade, 16 oz-->
+
+
+    <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba1.jpg">-->
+    <!--<mat-card-content>-->
+      <!--<p>-->
+        <!--The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.-->
+        <!--A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally-->
+        <!--bred for hunting.-->
+      <!--</p>-->
+    <!--</mat-card-content>-->
+
+
+    <mat-card-actions class="center-stuff">
+      <button mat-button>REQUEST</button>
+      <button mat-button class="go-right"> <mat-icon class="red" (click)="check123()">thumb_down</mat-icon> </button>
+      <button mat-button class="go-right"> <mat-icon class="green" (click)="check123()">thumb_up</mat-icon> </button>
+      <button mat-button class="go-right"> <span class="red font-16">-</span> <mat-icon class="red" (click)="check123()">favorite</mat-icon></button>
+
+      <!--<button mat-button>LIKE</button>-->
+    </mat-card-actions>
+  </mat-card>
+
+
+
+  <mat-card class="example-card">
+
+    <mat-card-header>
+
+      <div mat-card-avatar class="example-header-image mat-card-image1"></div>
+
+      <div class="flex-wrapper">
+
+        <div class="width-85">
+          <mat-card-title>
+            Kikkoman Gourmet Teriyaki 20 minute Marinade, 16 oz
+          </mat-card-title>
+        </div>
+        <div class="width-15">
+          <mat-card-title class="card-price">
+            $3.44
+          </mat-card-title>
+        </div>
+
+
+        <div class="width-35">
+          <mat-card-subtitle>Qty: 1</mat-card-subtitle>
+        </div>
+        <div class="width-35">
+          <mat-card-subtitle>2 days ago</mat-card-subtitle>
+        </div>
+
+        <div class="width-3">
+          &nbsp;
+        </div>
+
+        <div class="width-25 layout-last-right">
+          <mat-card-subtitle>0.84 mi</mat-card-subtitle>
+        </div>
+
+
+        <div class="width-100">
+          <!--<mat-card-subtitle class="text-store-overflow">Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>-->
+          <mat-card-subtitle>Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>
+        </div>
+
+      </div>
+
+    </mat-card-header>
+
+    <mat-card-actions class="center-stuff">
+      <button mat-button>REQUEST</button>
+      <button mat-button class="go-right"> <mat-icon class="red" (click)="check123()">thumb_down</mat-icon> </button>
+      <button mat-button class="go-right"> <mat-icon class="green" (click)="check123()">thumb_up</mat-icon> </button>
+      <button mat-button class="go-right"> <span class="green font-16">+</span> <mat-icon class="green" (click)="check123()">favorite_border</mat-icon></button>
+
+      <!--<button mat-button>LIKE</button>-->
+    </mat-card-actions>
+  </mat-card>
+
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+
+
+

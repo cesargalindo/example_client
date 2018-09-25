@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <div class="page-padding-3">
+    <mat-list>
+      <mat-list-item>
+        <mat-icon mat-list-icon>face</mat-icon>
+        <p matLine>
+          <a [routerLink]="['/profile']" mat-button  color="primary">My Profile</a>
+        </p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon mat-list-icon>shopping cart</mat-icon>
+        <p matLine>
+          <a [routerLink]="['/slider-settings']"  mat-button         color="primary">Default Price Request Settings</a>
+        </p>
+      </mat-list-item>
+
+
+      <mat-list-item>
+        <mat-icon mat-list-icon>lock</mat-icon>
+        <p matLine>
+          <a  [routerLink]="['/set-password']"    mat-button         color="primary">Change Password</a>
+        </p>
+      </mat-list-item>
+
+  </div>
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+

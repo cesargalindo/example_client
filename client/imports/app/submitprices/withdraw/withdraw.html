@@ -1,0 +1,27 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <div id="topdiv">
+    <mat-toolbar color="primary" class="header-toolbar">
+      <mat-icon [routerLink]="['/money']">arrow_back</mat-icon> &nbsp; WITHDRAW
+    </mat-toolbar>
+  </div>
+
+  <h3> under construction...  </h3>
+  <h3> coming soon... </h3>
+
+  <br />
+  <br />
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+
+
+

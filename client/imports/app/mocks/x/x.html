@@ -1,0 +1,873 @@
+<mat-sidenav-container>
+  
+    <mat-sidenav #sidenav class="sidenav">
+      <side-menus (click)="sidenav.close()"></side-menus>
+    </mat-sidenav>
+  
+    <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+    <!-- #########################################################-->
+    <h3>Reserved by Cesar G. </h3>
+    <h5>Dispalys mocks up for listing of items with their prices. This will replace the current home page? </h5>
+  
+
+  <br /> <br />
+  
+  <mat-icon class="md-48 green1">brightness_1</mat-icon> <span class="level">&nbsp;high</span>
+  
+  <br /> <br />
+
+  <mat-icon class="md-48 yellow1">brightness_1</mat-icon> <span class="level">med</span>
+  
+  <br /> <br />
+
+  <mat-icon class="md-48 red1">brightness_1</mat-icon> <span class="level">low</span>
+  
+  <br /> <br />
+
+  &nbsp; &nbsp; &nbsp; <a mat-raised-button id="small-button-green">Boost</a>
+    
+  <br /> <br />
+
+    <!-- #########################################################-->
+  
+      <div class="flex-wrapper">
+  
+        <!-- #############################################-->
+
+        <mat-card class="example-card">
+              
+          <div class="width-100">
+              Arm & Hammer Feel Sanitizing Skin Laundry Detergent HE
+            </div>
+
+          <div class="width-100">
+
+            <div class="width-50">
+              <img class="w125" src="https://storage.googleapis.com/medium300x/be/beerbluemoon3.jpg">
+            </div>
+
+            <div class="width-50">
+
+              <br />
+
+              <div class="width-50">
+                Size:
+              </div>
+              <div class="width-50">
+                64 oz
+              </div>
+              
+              <br />
+              <br />
+              
+              <div class="width-50">
+                  Fav:
+              </div>
+              <div class="width-50">
+                  <span (click)="check555(2)" class="padding-0">
+                      <mat-icon class="green">favorite_border</mat-icon>
+                  </span>
+              </div>
+
+              <br />
+              
+              <div class="width-100 height-17"> &nbsp; </div>
+
+              <div class="width-50">
+                Item:
+              </div>
+              <div class="width-50">
+                <mat-icon class="red">thumb_down</mat-icon>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="clear"></div>
+
+
+        </mat-card>
+
+        <!-- #############################################-->
+        
+        <mat-card class="example-card">
+
+          <div class="width-100">
+  
+            <div class="width-45">
+              <b class="green"> $0.004 </b> / fl oz
+            </div>
+            <div class="width-25">
+              $3.99
+            </div>
+            <div class="width-15">
+              &nbsp; <mat-icon class="md-dark">thumb_down</mat-icon>
+            </div>
+            <div class="width-15 text-align-right">
+              <b>RP</b>
+            </div>
+
+            <br />
+            <br />
+          
+            <div class="width-45 font-14 grey">
+              (3 days ago)
+            </div>
+            <div class="width-25 font-14">
+              Qty: 1
+            </div>  
+            <div class="width-30 subtitle-2 text-align-right">
+              0.81 mi
+            </div>
+  
+          </div>
+  
+          <br /><br />
+  
+          <span *ngIf="toggleMe[1]" (click)="toggleMeFunc(1)" >
+            <div class="width-90">
+                Safeway
+            </div>
+  
+            <div class="width-10 subtitle-2 text-align-right">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </div>
+          </span>
+  
+          <span *ngIf="!toggleMe[1]" (click)="toggleMeFunc(1)" >
+              <div class="width-90">
+                  Safeway
+              </div>
+    
+              <div class="width-10 subtitle-2 text-align-right">
+                <mat-icon>arrow_drop_down</mat-icon>
+              </div>
+  
+              <div class="width-100 subtitle-2">
+                2873 Nightengale Avenue, suite #2983 <br /> Sacramento New Haven, CA 94383
+              </div>
+          </span>
+  
+        </mat-card>
+  
+        <!-- #############################################-->
+  
+        <mat-card class="example-card">
+            
+          <div class="width-100">
+
+            <div class="width-45">
+              <b class="green"> $0.004 </b> / fl oz
+            </div>
+            <div class="width-25">
+              $3.99
+            </div>
+            <div class="width-15">
+              &nbsp; <mat-icon class="md-dark">thumb_down</mat-icon>
+            </div>
+            <div class="width-15 text-align-right">
+              <b>RP</b>
+            </div>
+
+            <br />
+            <br />
+          
+            <div class="width-45 font-14 grey">
+              (3 days ago)
+            </div>
+            <div class="width-25 font-14">
+              Qty: 1
+            </div>  
+            <div class="width-30 subtitle-2 text-align-right">
+              0.81 mi
+            </div>
+
+          </div>
+
+          <br /><br />
+
+          <span *ngIf="toggleMe[1]" (click)="toggleMeFunc(1)" >
+            <div class="width-90">
+                Safeway
+            </div>
+
+            <div class="width-10 subtitle-2 text-align-right">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </div>
+          </span>
+
+          <span *ngIf="!toggleMe[1]" (click)="toggleMeFunc(1)" >
+              <div class="width-90">
+                  Safeway
+              </div>
+    
+              <div class="width-10 subtitle-2 text-align-right">
+                <mat-icon>arrow_drop_down</mat-icon>
+              </div>
+
+              <div class="width-100 subtitle-2">
+                2873 Nightengale Avenue, suite #2983 <br /> Sacramento New Haven, CA 94383
+              </div>
+          </span>
+
+        </mat-card>
+
+        <!-- #############################################-->
+
+        <mat-card class="example-card">
+            
+          <div class="width-100">
+
+            <div class="width-45">
+              <b class="green"> $0.004 </b> / fl oz
+            </div>
+            <div class="width-25">
+              $3.99
+            </div>
+            <div class="width-15">
+              &nbsp; <mat-icon class="md-dark">thumb_down</mat-icon>
+            </div>
+            <div class="width-15 text-align-right">
+              <b>RP</b>
+            </div>
+
+            <br />
+            <br />
+          
+            <div class="width-45 font-14 grey">
+              (3 days ago)
+            </div>
+            <div class="width-25 font-14">
+              Qty: 1
+            </div>  
+            <div class="width-30 subtitle-2 text-align-right">
+              0.81 mi
+            </div>
+
+          </div>
+
+          <br /><br />
+
+          <span *ngIf="toggleMe[1]" (click)="toggleMeFunc(1)" >
+            <div class="width-90">
+                Safeway
+            </div>
+
+            <div class="width-10 subtitle-2 text-align-right">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </div>
+          </span>
+
+          <span *ngIf="!toggleMe[1]" (click)="toggleMeFunc(1)" >
+              <div class="width-90">
+                  Safeway
+              </div>
+    
+              <div class="width-10 subtitle-2 text-align-right">
+                <mat-icon>arrow_drop_down</mat-icon>
+              </div>
+
+              <div class="width-100 subtitle-2">
+                2873 Nightengale Avenue, suite #2983 <br /> Sacramento New Haven, CA 94383
+              </div>
+          </span>
+
+        </mat-card>
+
+        <!-- #############################################-->
+  
+        <mat-card class="example-card">
+            
+          <div class="width-100">
+
+            <div class="width-45">
+              <b class="green"> $0.004 </b> / fl oz
+            </div>
+            <div class="width-25">
+              $3.99
+            </div>
+            <div class="width-15">
+              &nbsp; <mat-icon class="md-dark">thumb_down</mat-icon>
+            </div>
+            <div class="width-15 text-align-right">
+              <b>RP</b>
+            </div>
+
+            <br />
+            <br />
+          
+            <div class="width-45 font-14 grey">
+              (3 days ago)
+            </div>
+            <div class="width-25 font-14">
+              Qty: 1
+            </div>  
+            <div class="width-30 subtitle-2 text-align-right">
+              0.81 mi
+            </div>
+
+          </div>
+
+          <br /><br />
+
+          <span *ngIf="toggleMe[1]" (click)="toggleMeFunc(1)" >
+            <div class="width-90">
+                Safeway
+            </div>
+
+            <div class="width-10 subtitle-2 text-align-right">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </div>
+          </span>
+
+          <span *ngIf="!toggleMe[1]" (click)="toggleMeFunc(1)" >
+              <div class="width-90">
+                  Safeway
+              </div>
+    
+              <div class="width-10 subtitle-2 text-align-right">
+                <mat-icon>arrow_drop_down</mat-icon>
+              </div>
+
+              <div class="width-100 subtitle-2">
+                2873 Nightengale Avenue, suite #2983 <br /> Sacramento New Haven, CA 94383
+              </div>
+          </span>
+
+        </mat-card>
+  
+        <!--tt #############################################-->
+  
+  
+        <!--tt #############################################-->
+  
+        <mat-card class="example-card">
+  
+          <div class="width-100">
+            Arm & Hammer Feel Sanitizing Skin Laundry Detergent HE, 64 oz
+          </div>
+  
+  
+          <div class="width-100">
+  
+            <div class="width-50">
+              <img class="w125" src="https://storage.googleapis.com/medium300x/be/beerbudlight10.jpg">
+            </div>
+  
+            <div class="width-50">
+  
+              <br />
+  
+              <div class="width-50">
+                Qty: 1
+              </div>
+              <div class="width-50 text-align-right">
+                <b>$33.44</b>
+              </div>
+  
+              <br />
+              <br />
+  
+  
+              <div class="width-50">
+                <mat-icon class="green" >thumb_up</mat-icon>
+              </div>
+              <div class="width-50 text-align-right">
+                <mat-icon class="red">thumb_down</mat-icon>
+              </div>
+  
+              <br />
+              <br />
+  
+              <div class="width-50">
+                <mat-icon class="red">favorite</mat-icon>
+              </div>
+              <div class="width-50 text-align-right">
+                <mat-icon class="blue-prim">note_add</mat-icon>
+              </div>
+  
+            </div>
+  
+            <div class="clear"></div>
+  
+          </div>
+  
+  
+          <span *ngIf="toggleMe[5]" (click)="toggleMeFunc(5)" >
+  
+            <div class="width-50 subtitle-2">
+                Safeway
+            </div>
+  
+            <div class="width-50 subtitle-2 text-align-right">
+                0.81 mi
+            </div>
+  
+            <div class="width-100">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </div>
+  
+          </span>
+  
+          <div class="clear"></div>
+  
+  
+          <span *ngIf="!toggleMe[5]" (click)="toggleMeFunc(5)" >
+  
+            <div class="width-50 subtitle-2">
+                Safeway
+            </div>
+  
+            <div class="width-50 subtitle-2 text-align-right">
+                0.81 mi
+            </div>
+  
+            <div class="width-100 subtitle-2">
+                2873 Nightengale Avenue, suite #2983 <br /> Sacramento New Haven, CA 94383
+            </div>
+  
+            <div class="width-100">
+              <mat-icon>arrow_drop_up</mat-icon>
+            </div>
+  
+          </span>
+  
+  
+        </mat-card>
+  
+        <!--tt #############################################-->
+  
+        <mat-card class="example-card">
+  
+          <div class="width-100">
+            Arm & Hammer Feel Sanitizing Skin Laundry Detergent HE, 64 oz
+          </div>
+  
+  
+          <div class="width-100">
+  
+            <div class="width-50">
+              <img class="w125" src="https://storage.googleapis.com/medium300x/be/beerbudweiser11.jpg">
+            </div>
+  
+            <div class="width-50">
+  
+              <br />
+  
+              <div class="width-50">
+                Qty: 1
+              </div>
+              <div class="width-50">
+                <b>$33.44</b>
+              </div>
+  
+              <br />
+              <br />
+  
+  
+              <div class="width-50">
+                <mat-icon class="green" >thumb_up</mat-icon>
+              </div>
+              <div class="width-50">
+                <mat-icon class="red">thumb_down</mat-icon>
+              </div>
+  
+              <br />
+              <br />
+  
+              <div class="width-50">
+                <mat-icon class="red">favorite</mat-icon>
+              </div>
+              <div class="width-50">
+                <mat-icon class="blue-prim">note_add</mat-icon>
+              </div>
+  
+            </div>
+  
+            <div class="clear"></div>
+  
+          </div>
+  
+  
+          <span *ngIf="toggleMe[6]" (click)="toggleMeFunc(6)" >
+  
+            <div class="width-50 subtitle-2">
+                Safeway
+            </div>
+  
+            <div class="width-50 subtitle-2">
+                0.81 mi
+            </div>
+  
+            <div class="width-100">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </div>
+  
+          </span>
+  
+          <div class="clear"></div>
+  
+  
+          <span *ngIf="!toggleMe[6]" (click)="toggleMeFunc(6)" >
+  
+            <div class="width-50 subtitle-2">
+                Safeway
+            </div>
+  
+            <div class="width-50 subtitle-2">
+                0.81 mi
+            </div>
+  
+            <div class="width-100 subtitle-2">
+                2873 Nightengale Avenue, suite #2983 <br /> Sacramento New Haven, CA 94383
+            </div>
+  
+            <div class="width-100">
+              <mat-icon>arrow_drop_up</mat-icon>
+            </div>
+  
+          </span>
+  
+        </mat-card>
+  
+  
+        <!--tt #############################################-->
+  
+  
+        <mat-card class="example-card">
+  
+        <div class="width-100">
+          Arm & Hammer Feel Sanitizing Skin Laundry Detergent HE, 64 oz
+        </div>
+  
+  
+        <div class="width-100">
+  
+          <div class="width-50">
+            <img class="w125" src="https://storage.googleapis.com/medium300x/be/beerbusch1.jpg">
+          </div>
+  
+          <div class="width-50">
+  
+            <br />
+  
+            <div class="width-50">
+              Qty: 1
+            </div>
+            <div class="width-50">
+              $33.44
+            </div>
+  
+            <br />
+  
+            <div class="width-33">
+              <mat-icon class="red">favorite</mat-icon>
+            </div>
+            <div class="width-33">
+              <mat-icon class="green" >thumb_up</mat-icon>
+            </div>
+            <div class="width-33">
+              <mat-icon class="red">thumb_down</mat-icon>
+            </div>
+  
+            <br />
+  
+            <div class="width-100">
+              <mat-icon class="blue-prim">note_add</mat-icon>
+              <span>Request</span>
+            </div>
+  
+          </div>
+  
+          <div class="clear"></div>
+  
+        </div>
+  
+  
+        <div class="width-100">
+          <mat-card-subtitle>Safeway (0.81 mi)<br />
+            2873 Nightengale Avenue, suite #2983 <br /> Sacramento New Haven, CA 94383</mat-card-subtitle>
+        </div>
+  
+        </mat-card>
+  
+  
+  
+    <!--tt #############################################-->
+  
+  
+    </div>
+  
+    <!--tt #############################################-->
+  
+  
+    <div class="flex-wrapper">
+  
+    <mat-card class="example-card">
+  
+      <mat-card-header>
+  
+        <div mat-card-avatar class="example-header-image mat-card-image1"></div>
+  
+        <div class="flex-wrapper">
+  
+          <div class="width-85">
+            <mat-card-title>
+              Arm & Hammer Feel Sanitizing Skin Laundry Detergent HE, 64 oz
+            </mat-card-title>
+          </div>
+          <div class="width-15">
+            <mat-card-title class="card-price">
+              $33.44
+            </mat-card-title>
+          </div>
+  
+  
+          <div class="width-25">
+            <mat-card-subtitle>Qty: 1</mat-card-subtitle>
+          </div>
+          <div class="width-35">
+            <mat-card-subtitle>1 day ago</mat-card-subtitle>
+          </div>
+  
+          <div class="width-25">
+            <mat-card-subtitle>0.84 mi</mat-card-subtitle>
+          </div>
+          <div class="width-9 top-padding-12">
+            <button mat-icon-button [matMenuTriggerFor]="menu1">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu1="matMenu">
+  
+              <button mat-menu-item (click)="check123(1)">
+                <mat-icon >note_add</mat-icon>
+                <span>Request</span>
+              </button>
+  
+              <button mat-menu-item disabled (click)="check123(1)">
+                <mat-icon class="green" >thumb_up</mat-icon>
+                <span>Like It</span>
+              </button>
+  
+              <button mat-menu-item  (click)="check123(1)">
+                <mat-icon class="red">thumb_down</mat-icon>
+                <span>UnLike It</span>
+              </button>
+  
+              <button mat-menu-item  (click)="check123(1)">
+                <mat-icon class="green">favorite_border</mat-icon>
+                <span class="green font-16">+ Favorite</span>
+              </button>
+  
+              <button mat-menu-item (click)="check123(1)">
+                <mat-icon class="red">favorite</mat-icon>
+                <span class="red font-16">- Favorite</span>
+              </button>
+  
+            </mat-menu>
+          </div>
+  
+  
+  
+          <div class="width-100">
+            <mat-card-subtitle>Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>
+          </div>
+  
+        </div>
+  
+      </mat-card-header>
+  
+    </mat-card>
+  
+  
+  
+    <mat-card class="example-card">
+  
+      <mat-card-header>
+  
+        <div mat-card-avatar class="example-header-image mat-card-image1"></div>
+  
+        <div class="flex-wrapper">
+  
+          <div class="width-85">
+            <mat-card-title>
+              Kikkoman Gourmet Teriyaki 20 minute Marinade, 16 oz
+            </mat-card-title>
+          </div>
+          <div class="width-15">
+            <mat-card-title class="card-price">
+              $3.44
+            </mat-card-title>
+          </div>
+  
+  
+          <div class="width-25">
+            <mat-card-subtitle>Qty: 1</mat-card-subtitle>
+          </div>
+          <div class="width-35">
+            <mat-card-subtitle>2 days ago</mat-card-subtitle>
+          </div>
+          <div class="width-25">
+            <mat-card-subtitle>3.33 mi</mat-card-subtitle>
+          </div>
+          <div class="width-9 top-padding-12">
+            <button mat-icon-button [matMenuTriggerFor]="menu2">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu2="matMenu">
+  
+              <button mat-menu-item (click)="check555(2)">
+                <mat-icon >note_add</mat-icon>
+                <span>Request</span>
+              </button>
+  
+              <button mat-menu-item disabled (click)="check555(2)">
+                <mat-icon class="green">thumb_up</mat-icon>
+                <span>Like It</span>
+              </button>
+  
+              <button mat-menu-item (click)="check555(2)">
+                <mat-icon class="red">thumb_down</mat-icon>
+                <span>UnLike It</span>
+              </button>
+  
+              <button mat-menu-item (click)="check555(2)">
+                <mat-icon class="green">favorite_border</mat-icon>
+                <span class="green font-16">+ Favorite</span>
+              </button>
+            </mat-menu>
+          </div>
+  
+          <div class="width-100">
+            <mat-card-subtitle>Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>
+          </div>
+  
+        </div>
+  
+      </mat-card-header>
+    </mat-card>
+  
+  
+    <hr>
+    <!--tt ########################################################################################-->
+  
+  
+    <mat-card class="example-card">
+  
+      <mat-card-header>
+  
+        <div mat-card-avatar class="example-header-image mat-card-image1"></div>
+  
+        <div class="flex-wrapper">
+  
+          <div class="width-85">
+            <mat-card-title>
+              Arm & Hammer Feel Sanitizing Skin Laundry Detergent HE, 64 oz
+            </mat-card-title>
+          </div>
+          <div class="width-15">
+            <mat-card-title class="card-price">
+              $33.44
+            </mat-card-title>
+          </div>
+  
+  
+          <div class="width-35">
+            <mat-card-subtitle>Qty: 1</mat-card-subtitle>
+          </div>
+          <div class="width-35">
+            <mat-card-subtitle>1 day ago</mat-card-subtitle>
+          </div>
+  
+          <div class="width-3">
+           &nbsp;
+          </div>
+  
+          <div class="width-25 layout-last-right">
+            <mat-card-subtitle>0.84 mi</mat-card-subtitle>
+          </div>
+  
+  
+          <div class="width-100">
+            <!--<mat-card-subtitle class="text-store-overflow">Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>-->
+            <mat-card-subtitle>Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>
+          </div>
+  
+       </div>
+  
+      </mat-card-header>
+  
+      <mat-card-actions class="center-stuff">
+        <button mat-button>REQUEST</button>
+        <button mat-button class="go-right"> <mat-icon class="red" (click)="check123()">thumb_down</mat-icon> </button>
+        <button mat-button class="go-right"> <mat-icon class="green" (click)="check123()">thumb_up</mat-icon> </button>
+        <button mat-button class="go-right"> <span class="red font-16">-</span> <mat-icon class="red" (click)="check123()">favorite</mat-icon></button>
+  
+      </mat-card-actions>
+    </mat-card>
+  
+  
+  
+    <mat-card class="example-card">
+  
+      <mat-card-header>
+  
+        <div mat-card-avatar class="example-header-image mat-card-image1"></div>
+  
+        <div class="flex-wrapper">
+  
+          <div class="width-85">
+            <mat-card-title>
+              Kikkoman Gourmet Teriyaki 20 minute Marinade, 16 oz
+            </mat-card-title>
+          </div>
+          <div class="width-15">
+            <mat-card-title class="card-price">
+              $3.44
+            </mat-card-title>
+          </div>
+  
+  
+          <div class="width-35">
+            <mat-card-subtitle>Qty: 1</mat-card-subtitle>
+          </div>
+          <div class="width-35">
+            <mat-card-subtitle>2 days ago</mat-card-subtitle>
+          </div>
+  
+          <div class="width-3">
+            &nbsp;
+          </div>
+  
+          <div class="width-25 layout-last-right">
+            <mat-card-subtitle>0.84 mi</mat-card-subtitle>
+          </div>
+  
+  
+          <div class="width-100">
+            <mat-card-subtitle>Safeway, 2873 Nightengale Avenue, suite #2983, Sacramento New Haven, CA 94383</mat-card-subtitle>
+          </div>
+  
+        </div>
+  
+      </mat-card-header>
+  
+      <mat-card-actions class="center-stuff">
+        <button mat-button>REQUEST</button>
+        <button mat-button class="go-right"> <mat-icon class="red" (click)="check123()">thumb_down</mat-icon> </button>
+        <button mat-button class="go-right"> <mat-icon class="green" (click)="check123()">thumb_up</mat-icon> </button>
+        <button mat-button class="go-right"> <span class="green font-16">+</span> <mat-icon class="green" (click)="check123()">favorite_border</mat-icon></button>
+  
+      </mat-card-actions>
+    </mat-card>
+  
+  
+    <!-- #########################################################-->
+  </mat-sidenav-container>
+  
+  
+  
+  
+  

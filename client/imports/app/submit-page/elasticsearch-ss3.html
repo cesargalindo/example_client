@@ -1,0 +1,56 @@
+<a (click)="forceRerunbyClick()" id="forcererunbyclick" class="display-none">hide this</a>
+
+<span *ngIf="display_spinner"> <mat-spinner></mat-spinner> </span>
+
+<div class="flex-wrapper" *ngFor="let price of prices | async  ">
+
+  <div class="width-100">
+    <hr />
+    <h3>{{price.itemName}} </h3>
+  </div>
+
+  <div class="width-15">
+    <span class="grey-12">Payout:</span>
+  </div>
+  <div class="width-75">
+    <b>{{price.payoutRequest | displayDecimalUp | currency:'USD':true:'1.2-2'}}</b> ({{ price.expiresAt | displayFormatDateNow}})
+  </div>
+  <div class="width-10">&nbsp;</div>
+
+
+  <div class="width-15">
+    <span class="grey-12">Size:</span>
+  </div>
+  <div class="width-50">
+    {{price.itemSize}}
+  </div>
+  <div class="width-35">
+    <span class="go-right"> <span class="grey-12">Quantity:</span> {{price.quantity}} </span>
+  </div>
+
+
+
+  <div class="width-50">
+    <p>
+      <a mat-raised-button color="accent" id="small-button" [routerLink]="['/submitprices-create', price._id]">Submit Price</a>
+    </p>
+
+  </div>
+  <div class="width-50">
+    <span class="go-right">
+      <img class="w125" src="{{price.itemImage}}">
+    </span>
+  </div>
+
+</div>
+
+
+
+<div *ngIf="queryScroll" class="center-stuff">
+  <span *ngIf="!queryScroll1 || !queryScroll2">
+    <button mat-raised-button class="md-primary" (click)="loadMoreItems()" >Load more ...</button>
+  </span>
+</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>

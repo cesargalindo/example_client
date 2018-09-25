@@ -1,0 +1,84 @@
+
+<div class="dialog-header">
+    <span class="dialog-title-text">Quantity Filter</span>
+    <button mat-dialog-close class="dialog-close-button material-icons md24" id="forceCloseClick">close</button>
+</div>
+
+<br />
+
+<div class="flex-wrapper">
+
+  <div class="width-50">
+    <mat-radio-button
+        type="radio"
+        (click)="radioSelected('all')"
+        [checked]="selectedRadio=='all'">
+      All
+    </mat-radio-button>
+  </div>
+
+  <div class="width-50">
+    <mat-radio-button
+        type="radio"
+        (click)="radioSelected('more than')"
+        [checked]="selectedRadio=='more than'">
+      More than
+    </mat-radio-button>
+  </div>
+
+  <br/> <br/>
+  
+  <div class="width-50">        
+    <mat-radio-button
+      type="radio"
+      (click)="radioSelected('equal to')"
+      [checked]="selectedRadio=='equal to'">
+    Equal to
+    </mat-radio-button>
+  </div>
+
+
+<div class="width-50">   
+    <mat-radio-button
+      type="radio"
+      (click)="radioSelected('less than')"
+      [checked]="selectedRadio=='less than'">
+    Less than
+  </mat-radio-button>
+</div>
+
+  <br /> <br /> <br /> 
+
+  <span *ngIf="selectSize">
+
+    <div class="width-40 underline"> &nbsp;&nbsp; Size &nbsp; </div>
+    <div class="width-60 underline"> &nbsp;&nbsp; &nbsp;&nbsp; Units &nbsp;&nbsp; </div>
+
+    <br /> <br /> 
+
+    <div class="width-40 dialog-quantity">
+      <mat-select [(ngModel)]="sizeValue" name="size">
+        <mat-option *ngFor="let size of sizeList" [value]="size.value">
+        {{size.viewValue}}
+        </mat-option>
+      </mat-select>
+    </div>
+
+    <div class="width-60 dialog-units">
+      <mat-select [(ngModel)]="unitsValue" (ngModelChange)="onChange($event)" name="unit">
+        <mat-option *ngFor="let unit of unitsList" [value]="unit.value">
+          {{unit.viewValue}}
+        </mat-option>
+      </mat-select>
+    </div>
+    
+    <br /> <br /> 
+
+  </span>
+  
+
+  <p class="red">These filter settings will be applied once you close this pop up box.</p>
+
+
+
+

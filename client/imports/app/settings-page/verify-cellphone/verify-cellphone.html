@@ -1,0 +1,116 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <div class="page-padding-3">
+
+    <h2>Verify Cell Phone Number</h2>
+
+    <div class="zo1-container">
+      <div class="row">
+
+        <div class="zo1-submit">
+
+          <mat-card *ngIf="!codeVerified">
+
+            <div *ngIf="error" layout="row" layout-padding layout-wrap layout-margin>
+              <p class="font-18b alert-danger">{{ error }}</p>
+            </div>
+
+            <form [formGroup]="cellphoneForm">
+
+              <mat-form-field class="input-width-95">
+                <input
+                    matInput
+                    formControlName="cellphone"
+                    dividerColor="primary"
+                    type="tel"
+                    required
+                    placeholder="Cellphone number"
+                    (keyup)="cellphoneFormat(cellphoneForm.value.cellphone)"
+                    (blur)="cellphoneValidator(cellphoneForm.value.cellphone) == true ? cellphoneIsInvalid = false : cellphoneIsInvalid = true" >
+              </mat-form-field>
+              <div *ngIf="cellphoneIsInvalid" class="alert alert-sm alert-danger">Cellphone number must be 10 digits</div>
+
+              <br />
+              <button type="submit" mat-raised-button color="primary" (click)="sendSMSCode()" >Send SMS code</button>
+
+              <span *ngIf="display_spinner" class="go-right">
+                <mat-spinner class="thumb-spinner"></mat-spinner>
+              </span>
+
+              <br />
+
+              <div *ngIf="smsSent" layout="row" layout-padding layout-wrap layout-margin>
+                <p class="font-18b"> An SMS message with the verification code has been sent to {{verifyForm.value.cellphone}} </p>
+                <p class="font-18b"> To proceed, please enter the 6-digit verification code below.</p>
+              </div>
+
+            </form>
+          </mat-card>
+
+          <br />
+          <br />
+
+          <mat-card *ngIf="!codeVerified">
+
+            <div *ngIf="error2" layout="row" layout-padding layout-wrap layout-margin>
+              <p class="font-18b alert-danger">{{ error2 }}</p>
+            </div>
+
+            <form [formGroup]="verifyForm">
+
+              <mat-form-field class="input-width-95">
+                <input
+                    matInput
+                    formControlName="code"
+                    dividerColor="primary"
+                    type="text"
+                    maxlength="6"
+                    required
+                    placeholder="Code (from SMS message)"
+                    (blur)="codeValidator(verifyForm.value.code) == true ? codeIsValid = false : codeIsValid= true">
+              </mat-form-field>
+              <div *ngIf="codeIsValid" class="alert alert-sm alert-danger">Code must be 6 digits (numbers only)</div>
+
+              <br />
+              <br />
+
+              <button type="submit" mat-raised-button color="primary" (click)="VerifyCode()" >Verify</button>
+              <a [routerLink]="['/profile']" mat-raised-button >Back</a>
+
+              <span *ngIf="display_spinner2" class="go-right">
+                <mat-spinner class="thumb-spinner"></mat-spinner>
+              </span>
+
+            </form>
+          </mat-card>
+
+          <mat-card *ngIf="codeVerified">
+            <div layout="row" layout-padding layout-wrap layout-margin>
+              <p class="font-18b green"> Congratulation, your cell phone number has been verified. </p>
+            </div>
+
+            <div layout="row" layout-align="center">
+              <a  mat-raised-button [routerLink]="['/landing']">Home</a>
+            </div>
+
+          </mat-card>
+
+        </div>
+
+      </div>
+    </div>
+
+    <br />
+
+  </div>
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+

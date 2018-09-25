@@ -1,0 +1,17 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <dialog-store>loading select store dialog...</dialog-store>
+
+  <!-- s5s - An item is passed to selectedItem from submit-page to elasticsearch-ss3-->
+  <elasticsearch-ss3> </elasticsearch-ss3>
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+

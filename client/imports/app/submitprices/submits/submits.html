@@ -1,0 +1,63 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <nav mat-tab-nav-bar>
+      <a mat-tab-link [routerLink]="['/submits']"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">
+        Submits
+      </a>
+  
+      <a mat-tab-link [routerLink]="['/spsubmitted']"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">
+        Active
+      </a>
+  
+      <a mat-tab-link [routerLink]="['/sprejected']"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">
+        Rejected
+      </a>
+  
+      <a mat-tab-link [routerLink]="['/spclosed']"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">
+        Closed
+      </a>
+
+      <a mat-tab-link [routerLink]="['/transactions']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+        Transactions
+      </a>
+    </nav>
+
+
+  <mat-card>
+    <h4>Balance <span class="go-right"> {{userInfo.userBalance | currency:'USD':true:'1.2-2'}} </span></h4>
+    <div class="center-stuff"> <a mat-raised-button [routerLink]="['/withdraw']" color="accent">Withdraw</a>  </div>
+  </mat-card>
+
+  <br>
+
+  <mat-card>
+    <h4>Amount pending to receive <span class="go-right green"> {{userInfo.userPendingSubmits | currency:'USD':true:'1.2-2'}} </span> </h4>
+    <span class="grey">Get paid for price submits</span> <br /> <br />
+
+
+    <h4>Total Balance <span class="go-right"> {{userInfo.totalBalance | currency:'USD':true:'1.2-2'}} </span> </h4>
+
+  </mat-card>
+
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+

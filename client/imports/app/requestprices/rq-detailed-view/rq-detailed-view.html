@@ -1,0 +1,113 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+
+  <div id="topdiv">
+    <mat-toolbar color="primary" class="header-toolbar">
+      <mat-icon (click)="redirectBack()">arrow_back</mat-icon> &nbsp; REQUEST DETAILS
+    </mat-toolbar>
+
+    <div class="width-100 small-height"> &nbsp; </div>
+
+    <span *ngIf="rpData.status == 1 || rpData.status == 9">
+      <a mat-raised-button color="primary" (click)="cancelRequestPrice()" class="top-49">Cancel Request</a>
+      <a mat-raised-button color="primary" (click)="editRequestPrice()" class="top-49">Edit</a>
+    </span>
+
+    <span *ngIf="rpData.status == 2">
+      <a mat-raised-button color="primary" (click)="RejectSubmittedPrice()" class="top-49">Reject</a>
+    </span>
+
+  </div>
+
+  <div class=" width-100 med-height"> &nbsp; </div>
+
+  <span *ngIf="display_spinner"> <mat-spinner></mat-spinner> </span>
+
+  <div *ngFor="let rp of apolloRequestpricesbyId | async">
+
+    <div class="layout-margin-5 layout-color-row-even">
+      <div class="width-50 grey">Requested:</div>
+      <div class="width-100 layout-padding-right">{{rp.requestedAt | displayFormatDate}}</div>
+
+      <div class="width-50 grey">Payout:</div>
+      <div class="width-100 layout-padding-right">{{rp.payRequest | displayDecimalUp | currency:'USD':true:'1.2-2'}}</div>
+
+      <div class="width-50 grey">Expires:</div>
+      <div class="width-100 layout-padding-right">{{rp.expiresAt | displayFormatDateNow}}</div>
+
+      <div class="width-50 grey">Status:</div>
+      <div class="width-100 layout-padding-right"> {{rp.status | displayRequestpriceStatus}} </div>
+    </div>
+
+    <span class="clear"></span>
+
+    <div class="layout-margin-5">
+
+      <div class="width-100 layout-padding-right">
+        <span class="break-word"> {{rp.priceT2.itemT.name}} </span>
+      </div>
+
+      <div class="width-100 layout-padding-right">
+        <span class="grey">Size:</span> {{rp.priceT2.itemT.size}} {{rp.priceT2.itemT.unit}}, <span class="grey">Qty:</span> {{rp.priceT2.quantity}}
+      </div>
+
+    </div>
+
+    <div class="layout-margin-5-center width-100">
+        <img class="w125" src="{{rp.priceT2.itemT.image}}">
+    </div>
+
+    <div class="layout-margin-5">
+      <div class="width-100 layout-padding-right">
+        <i>
+          <span class="break-word"> {{rp.priceT2.storeT.name}} </span> <br />
+          <span class="break-word"> {{rp.priceT2.storeT.address}} </span>
+        </i>
+      </div>
+    </div>
+
+    <span class="clear"></span>
+
+    <span *ngIf="rp.paidTos">
+
+      <div class="layout-margin-5 layout-color-row-odd" *ngFor="let paidTo of rp.paidTos; let i = index">
+
+          <div class="width-70">Submitted price</div>
+
+          <div class="width-100 layout-last-right" *ngIf="paidTo.submitpriceT.price > 99999">
+            {{paidTo.submitpriceT.price | displayPriceStatus }}
+          </div>
+
+          <div class="width-100 layout-last-right" *ngIf="paidTo.submitpriceT.price <= 99999">
+            {{paidTo.submitpriceT.price | currency:'USD':true:'1.2-2'}}
+          </div>
+
+          <div class="width-50">Submitted at</div>
+          <div class="width-100 layout-last-right">{{paidTo.paidAt | displayFormatDate}}</div>
+
+          <div class="width-70">Paid amount (pending)</div>
+          <div class="width-100 layout-last-right">{{paidTo.payout | displayDecimalUp | currency:'USD':true:'1.2-2'}}</div>
+
+        <br />
+
+      </div>
+
+    </span>
+
+  </div>
+
+  <br />
+
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+
+

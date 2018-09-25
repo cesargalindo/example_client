@@ -1,0 +1,17 @@
+
+<div class="dialog-header">
+    <span class="dialog-title-text">Recently Searched Stores</span>
+    <button mat-dialog-close class="dialog-close-button material-icons md24" id="forceCloseClick">close</button>
+</div>
+
+<mat-list id="search-history-list" #searchHistory>
+  <mat-list-item  *ngFor="let store of storeHistory; let i of index">
+    <mat-icon mat-list-icon (click)="selectHistory(store)">search</mat-icon>
+    <p matLine (click)="selectHistory(store)">{{store.name}}, <span class="font-14"> {{store.address1}} <br /> {{store.address2}} </span>  </p>
+  </mat-list-item>
+</mat-list>
+
+
+
+
+

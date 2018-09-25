@@ -1,0 +1,27 @@
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav   (swipeleft)='sidenav.close()' class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <div (swiperight)='sidenav.open()' class="example-sidenav-content">
+
+    <top-toolbar [SIDENAV]="sidenav"
+                 [showSearchIcon]="showSearchIcon"
+                 [toggleSearchbarVisibility]="toggleSearchbarVisibility.bind(this)"></top-toolbar>
+
+    <!-- #########################################################-->
+
+    <!-- s3s - user clicks on item from eleasticsearch or hits the enter key-->
+    <!-- s3s - user hits enter key on elasticsearch-ss1 page - event fired up here to landing page into select function -->
+    <elasticsearch-ss1 (filterButtonClicked)="toggleSettingsVisibility()"
+                       (selectedSS1Item)="select($event)"
+                       [showSearchbar] = "showSearchbar"
+                        ></elasticsearch-ss1>
+
+    <!-- s5s - An item is passed to selectedItem from landing-page to elasticsearch-ss2-->
+    <elasticsearch-ss2 [selectedItem]="item"></elasticsearch-ss2>
+
+    <!-- #########################################################-->
+  </div>
+</mat-sidenav-container>

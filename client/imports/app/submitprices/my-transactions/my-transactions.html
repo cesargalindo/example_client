@@ -1,0 +1,96 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link [routerLink]="['/submits']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+      Submits
+    </a>
+
+    <a mat-tab-link [routerLink]="['/spsubmitted']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+      Active
+    </a>
+
+    <a mat-tab-link [routerLink]="['/sprejected']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+      Rejected
+    </a>
+
+    <a mat-tab-link [routerLink]="['/spclosed']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+      Closed
+    </a>
+
+    <a mat-tab-link [routerLink]="['/transactions']"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{exact: true}">
+      Transactions
+    </a>
+  </nav>
+
+
+  <br />
+
+  <mat-tab-group class="font-14">
+
+      <mat-tab label="Pending Transactions">
+        <table>
+          <tr>
+            <th></th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+
+          <tr><td>10/2/17</td>	<td>Price Submit</td>	<td>0.44</td>	<td>pending</td> </tr>
+          <tr><td>9/28/17/td>	<td>Price Submit</td>	<td>0.55</td>	<td>pending</td> </tr>
+          <tr><td>9/28/17</td>	<td>Price Submit</td>	<td>0.09</td>	<td>pending</td> </tr>
+          <tr><td>9/26/17</td>	<td>Price Submit</td>	<td>0.15</td>	<td>pending</td> </tr>
+        </table>
+
+      </mat-tab>    
+
+      <mat-tab label="Closed Transactions">
+          <table>
+              <tr>
+                <th></th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Balance</th>
+              </tr>
+    
+              <tr><td>10/2/17</td>	<td>Price Submit</td>	<td>0.44</td>	<td>closed</td> <td>3.85</td> </tr>
+              <tr><td>9/28/17</td>	<td>Price Submit</td>	<td>0.12</td>	<td>closed</td> <td>3.41</td> </tr>
+              <tr><td>9/21/17</td>	<td>Purchased 300 Request - with balance</td>	<td>-3.00</td>	<td>closed</td> <td>3.29</td> </tr>
+              <tr><td> 9/21/17</td>	<td>Price Submit</td>	<td>0.15</td>	<td>closed</td> <td>6.29</td> </tr>
+              <tr><td> 9/21/17</td>	<td>Price Submit</td>	<td>0.21</td>	<td>closed</td> <td>6.14</td> </tr>
+              <tr><td>10/4/17</td>	<td>Price Submit</td>	<td>0.44</td>	<td>closed</td> <td>5.93</td> </tr>
+              <tr><td>9/26/17</td>	<td>Price Submit</td>	<td>0.63</td>	<td>closed</td> <td>5.49</td> </tr>
+              <tr><td>9/12/17</td>	<td>Price Submit</td>	<td>0.06</td>	<td>closed</td> <td>4.86</td> </tr>
+              <tr><td>9/10/17</td>	<td>Price Submit</td>	<td>0.03</td>	<td>closed</td> <td>4.80</td> </tr>
+              <tr><td>9/8/17</td>	<td>Purchased 300 Request - with credit card</td>	<td>-3.00</td>	<td>closed</td> <td>4.77</td> </tr>
+              <tr><td>9/1/17</td>	<td>Price Submit</td>	<td>0.15</td>	<td>closed</td> <td>4.77</td> </tr>
+            </table>
+
+
+      </mat-tab>    
+      
+  </mat-tab-group>
+        
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+

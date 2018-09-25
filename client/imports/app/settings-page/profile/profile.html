@@ -1,0 +1,104 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <div id="topdiv">
+    <mat-toolbar color="primary" class="header-toolbar">
+      <mat-icon [routerLink]="['/settings']">arrow_back</mat-icon> &nbsp; PROFILE
+    </mat-toolbar>
+  </div>
+
+
+  <mat-card>
+    <mat-card-title> User Status </mat-card-title>
+
+    <p>Withdrawal/Deposit Status: {{userInfo.withdrawalStatus}} </p>
+    <p>Submit Prices Status: {{userInfo.submitStatus}} </p>
+    <p>Request Prices Status: {{userInfo.requestStatus}} </p>
+
+    <hr />
+
+    <p>Score: {{userInfo.score}} </p>
+  </mat-card>
+
+  <br />
+
+  <mat-card>
+    <mat-card-title> User Profile </mat-card-title>
+
+    <button mat-button class="go-right" (click)="editProfile()">Edit</button>
+
+    <span class="indent-2">
+    <p> Firstname: {{userInfo.userProfile.firstname}} </p>
+    <p> Lastname: {{userInfo.userProfile.lastname}} </p>
+
+
+    <hr />
+
+    <p>Email: {{ email }}</p>
+
+    <p *ngIf="emailVerified">
+      Verified: <span class="green"> {{ emailVerified }} </span>
+    </p>
+
+    <p *ngIf="!emailVerified" >
+      Verified: <span class="red"> {{ emailVerified }} </span>
+
+      <a mat-raised-button
+         class="go-right"
+         color="warn"
+         id="small-button"
+         (click)="verifyEmail()">Verify</a>
+    </p>
+
+    <hr />
+
+    <span *ngIf="!username">
+      <p>
+        Cellphone number: <span class="red">Missing</span>
+
+        <span *ngIf="!cellVerified">
+          <a mat-raised-button
+             class="go-right"
+             color="accent"
+             id="small-button"
+             (click)="verifyCellphone()">Add</a>
+        </span>
+      </p>
+    </span>
+
+    <span *ngIf="username">
+      <p>Cellphone number: {{username}} </p>
+
+      <p *ngIf="cellVerified">
+        Verified: <span class="green">{{cellVerified}}</span>
+      </p>
+
+      <p *ngIf="!cellVerified">
+        Verified: <span class="red">{{cellVerified}}</span>
+
+        <a mat-raised-button
+           class="go-right"
+           color="warn"
+           id="small-button"
+           (click)="verifyCellphone()">Verify</a>
+      </p>
+    </span>
+
+  </span>
+
+  </mat-card>
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+
+
+
+
+

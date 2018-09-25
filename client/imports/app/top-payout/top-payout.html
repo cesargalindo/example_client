@@ -1,0 +1,44 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+
+  <reactive-map searchEnabled="true"
+                [dev_logging]="true"
+                search_radius="60"
+                initial_zoom="12"
+                [data_source]="filteredTopPayouts"
+                (onMarkerClicked)="onMarkerClicked($event)"
+                (userLocationUpdated)="onLocationChange($event)">
+    <mat-list id="results-list">
+      <mat-list-item *ngFor="let result of filteredTopPayouts; let i of index"
+                    [id]="result._id"
+                    [ngStyle]="highlightIfSelected(i)"
+                    class="payout-list-item
+          standard-list-item">
+        <mat-icon mat-list-icon>store</mat-icon>
+        <p matLine class="geo-header-row">
+                  <span class="title">
+                    {{result.store.name}}
+                  </span>
+          <span class="distance">
+                  {{result.store.distanceFromUser}}km
+                  </span>
+        </p>
+        <p matLine>
+          <span class="text-price">{{"$"+result.payoutSum.toString()}} payout</span>
+          <span> - {{result.payoutCount}} requests</span>
+        </p>
+        <p matLine><span class="store-address">{{result.store.address}}</span></p>
+      </mat-list-item>
+    </mat-list>
+  </reactive-map>
+
+
+  <!-- #########################################################-->
+</mat-sidenav-container>

@@ -1,0 +1,151 @@
+<div class="dialog-header">
+  <button mat-dialog-close class="cancel-button material-icons md24" id="forceCloseClick" >close</button>
+</div>
+
+
+<mat-dialog-content>
+
+  <span *ngIf="step_3">
+    <h4>How long do you want agents working on boosting the accuracy of your prices?</h4>
+    <mat-checkbox >15 mins</mat-checkbox>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <mat-checkbox >6 hours</mat-checkbox> <br />
+    <mat-checkbox >30 mins</mat-checkbox>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <mat-checkbox >12 hours</mat-checkbox> <br />
+    <mat-checkbox >1 hour</mat-checkbox>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <mat-checkbox >24 hours</mat-checkbox> <br />
+    <mat-checkbox >2 hours</mat-checkbox>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <mat-checkbox >48 hours</mat-checkbox> <br />
+
+    <h3> Max boost cost: 8 points </h3> Any unused points will be returned. <br/> <br />
+
+    <div class="layout-margin-5-center"> <a mat-raised-button color="primary">Submit Boost</a> </div>
+  </span>
+
+
+  <span *ngIf="step_1">
+    <h3>Please select reason for down vote</h3>
+    <mat-checkbox (click)="checkboxSelected(1)" >Wrong price</mat-checkbox> <br />
+    <mat-checkbox (click)="checkboxSelected(2)" >Wrong description or size</mat-checkbox> <br />
+    <mat-checkbox (click)="checkboxSelected(3)" >Wrong or poor image</mat-checkbox> <br />
+    <mat-checkbox (click)="checkboxSelected(4)" >My price request was not fulfilled</mat-checkbox> <br />    
+  </span>
+  
+  
+
+  <span *ngIf="step_2 == 1">
+  
+    <p>Please enter new price.  If out of stock, check "Sold Out"</p>
+
+    <form [formGroup]="submitPriceForm" (submit)="submitForm1()">
+
+        &nbsp;&nbsp;<mat-checkbox
+        formControlName="soldOut"
+        (change)="clickSoldOut()"
+        color="primary">{{labels.sold_out_8}}
+        </mat-checkbox>
+
+        <span *ngIf="!soldOut">
+              <mat-form-field class="input-width-90">
+                <input
+                    matInput
+                    type="tel"
+                    formControlName="price"
+                    dividerColor="primary"
+                    placeholder={{labels.price_7}}>
+              </mat-form-field>
+        </span>
+
+        <div *ngIf="errors.price_isNumberic" class="alert-danger">{{msgs.price_isNumberic}}</div>
+        <div *ngIf="errors.price_minMax" class="alert-danger">{{msgs.price_minMax}}</div>
+
+      <!-- <input [(ngModel)]="clearStoreField"
+            formControlName="value"
+            type="number"
+            class="places-autocomplete-input"
+            placeholder="{{paceHolderStoreName}}" > -->
+      <br /> <br />
+      
+      <button type="submit" mat-raised-button color="primary" class="top-49">Submit</button>
+          
+    </form>
+
+    
+  </span>
+
+  <span *ngIf="step_2 == 2">
+    Please correct description, size, and units.  Thank You! <br /><br />
+
+    <form [formGroup]="updateItemInfoForm" (submit)="submitForm2()">
+        
+      <p *ngIf="errors.error" class="alert-danger">{{errors.error}}</p>
+
+      <mat-form-field class="input-width-95">
+        <textarea
+            matInput
+            placeholder="{{labels.name_5}}"
+            formControlName="itemName">
+      </mat-form-field>
+      <div *ngIf="errors.itemName_isMinLength" class="alert alert-danger">{{msgs.itemName_isMinLength}}</div>
+
+      <br />
+      <br />
+
+      <span *ngIf="!ctSelected">
+        <mat-form-field class="input-width-90">
+          <input
+              matInput
+              placeholder="Size"
+              maxlength="40"
+              required
+              type="number"
+              formControlName="itemSize">
+        </mat-form-field>
+
+        <br />
+        <br />
+      </span>
+
+      <span *ngIf="ctSelected">
+        <mat-form-field class="input-width-18">
+          <input 
+            matInput 
+            disabled
+            type="number"            
+            value="1">
+        </mat-form-field>
+      </span>
+
+      <mat-select
+          class="input-width-80" 
+          placeholder="Units" 
+          formControlName="itemUnit" 
+          (ngModelChange)="onChangeUnits($event)"
+          name="unit">
+        <mat-option *ngFor="let unit of unitsList" [value]="unit.value">
+          {{unit.viewValue}}
+        </mat-option>
+      </mat-select>
+              
+      <br /><br /> <br /> 
+      
+      <a [routerLink]="['/v']" mat-raised-button class="top-49">Cancel</a>      
+      <button type="submit" mat-raised-button color="primary" class="top-49">Submit</button>
+
+      <br /> 
+      
+    </form>
+
+  </span>
+
+  <span *ngIf="step_2 == 3">
+    33  please enter your best price here...  :)
+  </span>
+
+  <span *ngIf="step_2 == 4">
+   44 please enter your best price here...  :)
+  </span>
+
+
+</mat-dialog-content>
+
+<span class="hidden" *ngIf="apolloItem1 | async"> &nbsp; </span>
+
+<br />
+<br />
+

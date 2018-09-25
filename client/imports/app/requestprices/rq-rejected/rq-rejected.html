@@ -1,0 +1,95 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+
+  <div id="topdiv">
+    <mat-toolbar color="primary" class="header-toolbar">
+      <mat-icon [routerLink]="['/landing']">arrow_back</mat-icon> &nbsp; REJECTED PRICES
+    </mat-toolbar>
+  </div>
+
+  <div class="width-100 top-sub-div">
+    <tr><td class="top-sub-text1">Rejected prices:</td>  <td class="top-sub-text2"> {{total}}  </td> </tr>
+  </div>
+
+  <span *ngIf="apolloRequestpricesCount3 | async"></span>
+
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link [routerLink]="['/requests']"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{exact: true}">
+      Requests
+    </a>
+
+    <a mat-tab-link [routerLink]="['/rqactive']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+      Active
+    </a>
+
+    <a mat-tab-link [routerLink]="['/rqreceived']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+      Received
+    </a>
+
+    <a mat-tab-link [routerLink]="['/rqrejected']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+      Rejected
+    </a>
+
+    <a mat-tab-link [routerLink]="['/rqclosed']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+      Closed
+    </a>
+  </nav>
+
+  <span *ngIf="display_spinner"> <mat-spinner></mat-spinner> </span>
+
+  <div class="layout-margin-5" *ngFor="let rp of apolloRequestprices3 | async | paginate: { id: 'rpPager', itemsPerPage: pageSize, currentPage: p, totalItems: total }">
+
+    <h4> {{rp.requestedAt | date:'yMMMdjms' }} </h4>
+
+    <div class="width-20 min-height-1"> <a mat-mini-fab (click)="detailedView(rp)" class="go-left"><mat-icon>check</mat-icon></a> </div>
+
+    <div class="width-50 min-height-1">Pay for price</div>
+    <span *ngIf="rp.status==2">
+      <div class="width-100 min-height-1 layout-last-right"><span class="red">{{rp.payRequest | displayDecimalUp | currency:'USD':true:'1.2-2'}}</span></div>
+    </span>
+    <span *ngIf="rp.status!=2">
+      <div class="width-100 min-height-1 layout-last-right">$0.00</div>
+    </span>
+
+    <div class="width-50 min-height-1">Status</div>
+    <div class="width-100 min-height-1 layout-last-right"> {{rp.status | displayRequestpriceStatus}} </div>
+
+
+    <div class="width-20 min-height-1"> &nbsp; &nbsp; </div>
+    <div class="width-100 min-height-1 grey">
+      {{rp.priceT2.itemT.name | slice:0:30 }}<span *ngIf="rp.priceT2.itemT.name.length > 30">&hellip;</span>
+    </div>
+
+  </div>
+
+  <br />
+
+  <div class="is-text-centered ">
+    <div class="spinner" [ngClass]="{ 'hidden': !loading }">.....</div>
+    <pagination-controls (pageChange)="getRequestprices($event)" id="rpPager"></pagination-controls>
+  </div>
+
+  <br />
+
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+

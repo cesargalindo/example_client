@@ -1,0 +1,63 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+  <h3>Listing of Mock up pages</h3>
+
+  <button  mat-raised-button color="warn" [routerLink]="['/t']">
+    <mat-icon class="blue-prim">build</mat-icon>
+    <span>Page T</span>
+  </button>
+
+  <br /> <br />
+
+  <button  mat-raised-button color="accent" [routerLink]="['/v']">
+    <mat-icon class="blue-prim">build</mat-icon>
+    <span>Page V</span>
+  </button>
+
+  <br /> <br />
+
+  <button  mat-raised-button color="primary" [routerLink]="['/w']">
+    <mat-icon class="blue-prim">build</mat-icon>
+    <span>Page W</span>
+  </button>
+
+  <br /> <br />
+
+  <button  mat-raised-button color="primary" [routerLink]="['/x']">
+    <mat-icon class="blue-prim">build</mat-icon>
+    <span>Page X</span>
+  </button>
+
+  <br /> <br />
+
+  <button  mat-raised-button color="warn" [routerLink]="['/y']">
+    <mat-icon class="blue-prim">build</mat-icon>
+    <span>Page Y</span>
+  </button>
+
+
+  <br /> <br />
+
+  <button  mat-raised-button color="accent" [routerLink]="['/z']">
+    <mat-icon class="blue-prim">build</mat-icon>
+    <span>Page Z</span>
+  </button>
+
+  <br /> <br />
+
+  <button  mat-raised-button color="accent" [routerLink]="['/auto-complete']">
+    <mat-icon class="blue-prim">build</mat-icon>
+    <span>auto complete</span>
+  </button>
+
+
+
+  <!--ss #########################################################-->
+</mat-sidenav-container>

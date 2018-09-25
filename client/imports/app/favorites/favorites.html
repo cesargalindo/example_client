@@ -1,0 +1,87 @@
+<mat-sidenav-container>
+
+  <mat-sidenav #sidenav class="sidenav">
+    <side-menus (click)="sidenav.close()"></side-menus>
+  </mat-sidenav>
+
+  <top-toolbar [SIDENAV]="sidenav" ></top-toolbar>
+  <!-- #########################################################-->
+
+<span *ngIf="apolloFavs1 | async"></span>
+
+<mat-tab-group>
+  <mat-tab label="Items">
+            
+      <div class="flex-wrapper" *ngFor="let item of items">
+        
+        <mat-card class="example-card">
+
+          <div class="width-100">
+          {{item.itemT.name}}
+          </div>
+
+          <div class="width-100">
+
+            <div class="width-50">
+              <img class="w125" src={{item.itemT.image}}>
+            </div>
+
+            <div class="width-50">
+              
+              <div class="width-100">
+                Qty: {{item.itemT.quantity}} <br>
+                Size: {{item.itemT.size}}
+              </div>
+              
+
+              <br />
+              <div class="width-100">
+                <mat-icon class="red">favorite</mat-icon>
+              </div>
+
+              <br />
+              <div class="width-100">
+                <a mat-raised-button id="small-button" color="primary" [routerLink]="['/new-item']">Check price</a>                  
+              </div>
+              
+            </div>
+            
+          </div>
+
+        </mat-card>
+          
+      </div>
+  </mat-tab>
+
+
+  <mat-tab label="Stores">
+    <br />
+    <div class="flex-wrapper" *ngFor="let store of stores">
+
+        <mat-card class="example-card">
+          <div class="width-70">
+              {{store.storeT.name}}
+              <br />
+              {{store.storeT.address}}              
+          </div>
+    
+          <div class="width-30">
+            <br />
+            <mat-icon class="red">favorite</mat-icon>
+            <br />
+          </div>
+        </mat-card>
+
+    </div>  
+
+  </mat-tab>
+
+</mat-tab-group>
+
+
+  <!-- #########################################################-->
+</mat-sidenav-container>
+
+
+
+

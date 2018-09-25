@@ -1,0 +1,39 @@
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { Ng2PaginationModule } from 'ng2-pagination';
+import { CommonModule } from '@angular/common';
+
+import { CustomMaterialModule } from "../../custom-material/custom-material.module"
+import { NavigationModule } from '../../navigation/navigation.module';
+import { CustomPipesModule } from '../../custom-pipes/custom-pipes.module';
+import { ApolloXModule } from '../../apollo/apollo.module';
+import { ServicesGlobalModule } from '../../services-global/services-global.module';
+import { ServicesModule } from '../../services/services.module';
+
+import { RQDetailedViewComponent } from './rq-detailed-view';
+
+@NgModule({
+    imports: [
+        Ng2PaginationModule,
+        CommonModule,
+        RouterModule.forChild([{
+            path: '', component: RQDetailedViewComponent,
+        }]),
+        CustomMaterialModule,
+        NavigationModule,
+        CustomPipesModule,
+        ApolloXModule,
+        ServicesGlobalModule,
+        ServicesModule
+    ],
+    declarations: [
+        RQDetailedViewComponent,
+    ]
+})
+export class RQDetailedViewModule {
+
+    constructor() {
+        console.warn('----- constructor -- RQDetailedViewModule ------');
+    }
+
+}
